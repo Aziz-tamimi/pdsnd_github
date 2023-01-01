@@ -265,5 +265,27 @@ def main():
     usertype_count=df['User Type'].value_counts()
     print('\nCount of User types: {}\n'.format(usertype_count))
 
+     # Display earliest, most recent, and most common year of birth
+    if 'Birth Year' in df:
+        earliest_dob=int(df['Birth Year'].min())
+        print('\nEarliest Date of Birth: {}\n'.format(earliest_dob))
+    else:
+        print('\nEarliest Date of birth could not be determindd, the dataset does not contain information for Birth Year\n')
+
+    if 'Birth Year' in df:
+        most_recent_dob=int(df['Birth Year'].max())
+        print('\nMost Recent Year of Birth: {}\n'.format(most_recent_dob))
+    else:
+        print('\nCannot display the most recent year of birth, the dataset does not contain information for Birth Year\n')
+
+    if 'Birth Year' in df:
+        Most_common_dob=int(df['Birth Year'].mode()[0])
+        print('\nMost Common Year of birth: {}\n'.format(Most_common_dob))
+    else:
+        print('\nCannot display the most common year of birth, the dataset does not contain information for Birth Year\n')
+
+    print("\nThis took %s seconds." % (time.time() - start_time))
+    print('-'*40)
+
 if __name__ == "__main__":
     main()
