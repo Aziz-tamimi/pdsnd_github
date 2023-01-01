@@ -202,6 +202,10 @@ def user_stats(df):
     except KeyError:
         print("\n Gender Types: \n Sorry! No data available for this month.")
 
+def printinfo ():
+    print ("Abdulaziz")
+    Print ("25 years")
+
     # TO DO: Display earliest, most recent, and most common year of birth
 
     try:
