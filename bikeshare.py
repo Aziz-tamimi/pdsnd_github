@@ -65,11 +65,11 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     # load data file into a dataframe
-    
+
     df = pd.read_csv(CITY_DATA[city])
 
     # convert the Start Time column to datetime
-    
+
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
     # extract month and day of week from Start Time to create new columns
@@ -80,24 +80,24 @@ def load_data(city, month, day):
     # filter by month if applicable
     if month != 'All':
         # use the index of the months list to get the corresponding int
-        
+
         months = ['January', 'February', 'March', 'April', 'May', 'June']
         month = months.index(month) + 1
 
         # filter by month to create the new dataframe
-        
+
         df = df[df['month'] == month]
 
         # filter by day of week if applicable
-        
+
     if day != 'All':
         # use the index of the days list to get the corresponding int
-        
+
         days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         day = days.index(day) + 1
 
         # filter by day of week to create the new dataframe
-        
+
         df = df[df['day_of_week'] == day]
 
     return df
@@ -239,7 +239,7 @@ def main():
         user_stats(df)
         trip_duration_stats(df)
         station_stats(df)
-        
+
 
         more_data = input('\n Would you like to view 5 lines of the selected raw data? Enter Yes or No.\n').title()
         answers = ['Yes', 'No']
@@ -261,6 +261,9 @@ def main():
             print('Bye!')
             break
 
+ # Display counts of user types
+    usertype_count=df['User Type'].value_counts()
+    print('\nCount of User types: {}\n'.format(usertype_count))
 
 if __name__ == "__main__":
     main()
